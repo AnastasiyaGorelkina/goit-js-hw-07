@@ -4,12 +4,11 @@ import { galleryItems } from './gallery-items.js';
 console.log(galleryItems);
 
 const galleryContainer = document.querySelector('.gallery');
-
 const galleryCardMarkup = createGalleryCardMarkup(galleryItems);
 
 galleryContainer.insertAdjacentHTML('beforeend', galleryCardMarkup);
 
-galleryContainer.addEventListener('click', onGalleryContainerClick);
+galleryContainer.addEventListener('click', onGalleryContainerClick, { once: true});
 
 function createGalleryCardMarkup(items) {
     return items.map(({ preview, original, description }) => {
@@ -26,7 +25,6 @@ function onGalleryContainerClick(evt) {
     if (!evt.target.classList.contains('gallery__image')) {
         return;
     }
-    
     return new SimpleLightbox('.gallery a', { caption: true, captionDelay: 250, captionsData: 'alt' });
  
 };
