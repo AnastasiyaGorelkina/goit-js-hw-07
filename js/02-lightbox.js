@@ -8,7 +8,6 @@ const galleryCardMarkup = createGalleryCardMarkup(galleryItems);
 
 galleryContainer.insertAdjacentHTML('beforeend', galleryCardMarkup);
 
-galleryContainer.addEventListener('click', onGalleryContainerClick, { once: true});
 
 function createGalleryCardMarkup(items) {
     return items.map(({ preview, original, description }) => {
@@ -20,14 +19,10 @@ function createGalleryCardMarkup(items) {
 
 };
 
-function onGalleryContainerClick(evt) {
-    evt.preventDefault();
+let gallery = new SimpleLightbox('.gallery a', { caption: true, captionDelay: 250, captionsData: 'alt' });
+gallery.on('show.simplelightbox', function (e) {
+	e.preventDefault();
     if (!evt.target.classList.contains('gallery__image')) {
         return;
     }
-    return new SimpleLightbox('.gallery a', { caption: true, captionDelay: 250, captionsData: 'alt' });
- 
-};
-
-
-
+});
