@@ -22,7 +22,7 @@ function createGalleryCardMarkup(items) {
 let gallery = new SimpleLightbox('.gallery a', { caption: true, captionDelay: 250, captionsData: 'alt' });
 gallery.on('show.simplelightbox', function (e) {
 	e.preventDefault();
-    if (!evt.target.classList.contains('gallery__image')) {
+    if (!e.target.classList.contains('gallery__image')) {
         return;
     }
 });
